@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./security/AuthContext";
 
 export const LoginComponent = () => {
-  const [form, setForm] = useState({ username: "pblgllgs", password: "pass" });
+  const [form, setForm] = useState({ username: "pblgllgs", password: "password" });
   const [showErrMessage, setShowErrMessage] = useState(false);
   const { username, password } = form;
 
@@ -18,14 +18,13 @@ export const LoginComponent = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (login(username, password)) {
+    if (await login(username, password)) {
       navigate(`/welcome/${username}`);
     } else {
       setShowErrMessage(true);
     }
-    console.log();
   };
 
   return (
@@ -36,7 +35,7 @@ export const LoginComponent = () => {
 
         <form className="LoginForm" onSubmit={handleSubmit}>
           <div className="mb-3 mt-3">
-            <label className="form-label">Username: </label>
+            <label className="form-label mx-3">Username: </label>
             <input
               type="text"
               name="username"
@@ -45,9 +44,9 @@ export const LoginComponent = () => {
             />
           </div>
           <div className="mb-3">
-            <label>Password: </label>
+            <label className="form-label mx-3">Password: </label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={password}
               onChange={(e) => handleChange(e)}

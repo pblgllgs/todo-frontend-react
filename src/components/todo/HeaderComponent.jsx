@@ -47,13 +47,12 @@ export const HeaderComponent = () => {
               </li>
               <li className="nav-item fs-5">
                 {isAuthenticated && (
-                  <Link
+                  <button
                     className="nav-link"
-                    to="/logout"
                     onClick={handleLogout}
                   >
                     Logout
-                  </Link>
+                  </button>
                 )}
               </li>
             </ul>
